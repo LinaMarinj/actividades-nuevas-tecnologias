@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
 
 # Configuración de la página
 st.set_page_config(page_icon="📌", layout="wide")
@@ -88,7 +87,6 @@ if opcion == "Todos los destinos":
     st.subheader("▪️ Todos los destinos: ")
     todos_los_destinos = df.iloc[0:40]
     st.dataframe(todos_los_destinos)
-    
-if opcion == "Modifica un destino a visitar":
-    edited_df = st.data_editor(df, use_container_width=True)    
 
+if opcion == "Modifica un destino a visitar":
+    edited_df = st.data_editor(df, use_container_width=True)

@@ -46,3 +46,11 @@ st.code(
     language="text",
 )
 
+st.markdown("""
+### 👥 Integrantes del Proyecto
+
+- 👩‍💻 **Lina Marcela Marín Jiménez**  
+- 👨‍💻 **Juan Jose Lopez Gomez**  
+- 👨‍💻 **Jonathan Zapata Londoño**  
+- 👨‍💻 **Michael Steven Galvis Buritica**
+""")

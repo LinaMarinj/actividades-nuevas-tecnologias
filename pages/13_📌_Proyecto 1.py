@@ -5,6 +5,7 @@ import pandas as pd
 # Configuración de la página
 st.set_page_config(page_icon="📌", layout="wide")
 
+
 st.title("Proyecto Grupal")
 
 
@@ -17,6 +18,7 @@ st.subheader("🏥Defunciones ocurridas en en el Hospital General de Medellín")
 df = pd.read_csv(
     "Defunciones_ocurridas_en__en_el_Hospital_General_de_Medell_n_20250502.csv"
 )
+
 
 st.markdown(
     """

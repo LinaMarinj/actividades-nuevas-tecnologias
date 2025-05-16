@@ -25,7 +25,7 @@ st.markdown(
 """
 )
 
-st.markdown('<h1 style="color:#0063F7;">Solución</h1>', unsafe_allow_html=True)
+st.markdown('<h2 style="color:#0063F7;">Solución</h2>', unsafe_allow_html=True)
 
 st.subheader("**1. Diccionario:**")
 

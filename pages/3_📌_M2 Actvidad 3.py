@@ -5,13 +5,11 @@ st.set_page_config(page_icon="📌", layout="wide")
 
 st.title("Momento 2 - Actividad 3")
 
-st.header("Filtrado de datos en Pandas con todas las formas y operadores")
+st.header("Practica de filtrado con Pandas y filtros dinámicos en Streamlit")
 st.markdown(
     """
-Esta actividad es una introducción práctica a Python y a las estructuras de datos básicas.
-En ella, exploraremos los conceptos fundamentales de Python y aprenderemos a utilizar variables,
-tipos de datos, operadores, y las estructuras de datos más utilizadas como listas, tuplas,
-diccionarios y conjuntos.
+    En esta actividad se aplicarán distintas técnicas de filtrado de datos con Pandas, tanto en **Google Colab** (plataforma gratuita en línea que permite escribir y ejecutar código Python directamente desde el navegador) 
+    como en una aplicación interactiva con **Streamlit.** Se utilizarán operadores, funciones y métodos específicos para filtrar información relevante de un DataFrame.
 """
 )
 
@@ -19,14 +17,14 @@ st.header("Objetivos de aprendizaje")
 
 st.markdown(
     """
-- Comprender los tipos de datos básicos en Python
-- Aprender a utilizar variables y operadores
-- Dominar las estructuras de datos fundamentales
-- Aplicar estos conocimientos en ejemplos prácticos
+- Filtrado básico y avanzado de datos en Pandas.
+- Uso de operadores y funciones para manipulación de DataFrames.
+- Implementación de filtros interactivos en aplicaciones con Streamlit.
+- Ejecución y visualización de código Python en Google Colab.
 """
 )
 
-st.header("Solución")
+st.markdown('<h2 style="color:#0063F7;">Solución</h2>', unsafe_allow_html=True)
 
 st.subheader("Actividad 1: Practica de filtrado en Pandas-Google Colab")
 

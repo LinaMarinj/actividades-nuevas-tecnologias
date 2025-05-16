@@ -26,7 +26,7 @@ st.markdown(
 """
 )
 
-st.header("Solución")
+st.markdown('<h2 style="color:#0063F7;">Solución</h2>', unsafe_allow_html=True)
 
 
 st.title("🧑‍🎓 Bienvenido al explorador de Estudiantes")

@@ -11,21 +11,20 @@ st.header(
 )
 st.markdown(
     """
-Desarrollar una aplicación web interactiva utilizando Streamlit que permita a los usuarios explorar y manipular un DataFrame de Pandas, haciendo uso intensivo de los métodos .loc y .iloc para realizar selecciones, filtros y modificaciones de datos. La temática y el diseño de la aplicación son libres, permitiendo expresar su creatividad.
-"""
+Desarrollar una aplicación web interactiva utilizando Streamlit que permita a los usuarios explorar y manipular un DataFrame de Pandas,
+haciendo uso intensivo de los métodos .loc y .iloc"""
 )
 
 st.header("Objetivos de aprendizaje")
 
 st.markdown(
     """
-- Comprender los métodos .loc y .iloc para realizar selecciones.
-- Aprender a utilizar los métodos .loc y .iloc.
-- Aplicar estos conocimientos en una actividad práctica
+- Manejo selecciones
+- Uso de filtros y modificaciones de datos.
 """
 )
 
-st.header("Solución")
+st.markdown('<h2 style="color:#0063F7;">Solución</h2>', unsafe_allow_html=True)
 
 
 st.markdown(
@@ -39,7 +38,7 @@ st.markdown(
 )
 
 
-df = pd.read_csv("destinos_para_colombianos.csv")
+df = pd.read_csv("pages/static/dataset/destinos_para_colombianos.csv")
 
 
 opcion = st.selectbox(
@@ -47,16 +46,17 @@ opcion = st.selectbox(
     (
         "Destinos que sí requieren visa",
         "Destinos que no requieren visa",
-        "Destinos donde puedo quedarme hasta 30 días",
         "Destinos donde puedo quedarme hasta 90 días",
         "Destinos donde puedo quedarme hasta 180 días",
         "Todos los destinos",
         "Modifica un destino a visitar",
+        "Primero 5 paises de la lista",
+        "Top 3 paises más visitados",
     ),
 )
 
 if opcion == "Destinos que sí requieren visa":
-    st.subheader("▪️ Destinos que sí requieren visa: ")
+    st.subheader("▪️  Destinos que sí requieren visa: ")
     si_visa = df.loc[df["Requiere Visa"] == "Sí", "País"]
     st.dataframe(si_visa)
 
@@ -64,12 +64,6 @@ if opcion == "Destinos que no requieren visa":
     st.subheader("▪️ Destinos que no requieren visa: ")
     no_visa = df.loc[df["Requiere Visa"] == "No Aplica", "País"]
     st.dataframe(no_visa)
-
-
-if opcion == "Destinos donde puedo quedarme hasta 30 días":
-    st.subheader("▪️Destinos donde puedo quedarme hasta 30 días: ")
-    dias_treinta = df.loc[df["Días Máximos de Estadía"] == "30 días"]
-    st.dataframe(dias_treinta)
 
 
 if opcion == "Destinos donde puedo quedarme hasta 90 días":
@@ -90,3 +84,28 @@ if opcion == "Todos los destinos":
 
 if opcion == "Modifica un destino a visitar":
     edited_df = st.data_editor(df, use_container_width=True)
+    st.dataframe(edited_df)
+
+
+if opcion == "Primero 5 paises de la lista":
+    st.subheader("▪️Primero 5 paises de la lista: ")
+    primeros_cinco = df.iloc[0:5]
+    st.dataframe(primeros_cinco)
+
+if opcion == "Top 3 paises más visitados":
+    st.subheader("▪️Primero 5 paises de la lista ⭐:")
+
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        st.subheader("México")
+        st.image("assets/mexico.jpg")
+    with col2:
+        st.subheader("Perú")
+        st.image("assets/peru.jpg")
+    with col3:
+        st.subheader("Chile")
+        st.image("assets/chile.jpg")
+
+    df_mas_visitados = df.iloc[[17, 13, 7]]
+    st.dataframe(df_mas_visitados)
+    

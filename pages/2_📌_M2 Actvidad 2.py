@@ -1,6 +1,6 @@
-import os
 import pandas as pd
 import streamlit as st
+import io
 
 
 # Configuración de la página
@@ -37,14 +37,14 @@ opcion = st.selectbox(
     "Elige una opción:",
     (
         "Ver primeras y últimas 5 filas",
-        "Ver el resumen con .info() y .describe().)",
+        "Resumen del dataset .info() y .describe()",
         "Seleccionar columnas específicas",
         "Filtrar por promedio",
     ),
 )
 
 
-archivo = pd.read_csv("estudiantes_colombia.csv")
+archivo = pd.read_csv("pages/static/dataset/estudiantes_colombia.csv")
 
 # Opción 1
 if opcion == "Ver primeras y últimas 5 filas":
@@ -59,30 +59,42 @@ if opcion == "Ver primeras y últimas 5 filas":
 
 
 # Opción 2
-elif opcion == "Resumen del dataset (.info y .describe)":
+elif opcion == "Resumen del dataset .info() y .describe()":
     st.subheader("Resumen general del dataset")
-    # mostrar resumen
-    st.write(archivo.info())
 
-    st.text("Resumen estadístico con .describe():")
-    # Mostrar estadistica
+    buffer = io.StringIO()
+    archivo.info(buf=buffer)
+    info = buffer.getvalue()
+    st.text(info)
+
+    st.subheader("Estadísticas descriptivas")
     st.write(archivo.describe())
 
 
-# Opción 3: Selección de columnas
+# Opción 3
 elif opcion == "Seleccionar columnas específicas":
     st.subheader("Que columnas quieres ver")
     columnas = st.multiselect(
         "Selecciona una o más columnas:",
         archivo.columns.tolist(),
-        default=["nombre", "edad", "ciudad", "promedio", "asistencia"],
+        default=["id", "nombre", "edad", "ciudad", "promedio", "asistencia"],
     )
     st.dataframe(archivo[columnas])
 
 
-# Opción 4: # Filtrar estudiantes con promedio mayor a un valor definido por el usuario (usando un slider).
-
+# Opción 4
 elif opcion == "Filtrar por promedio":
-    st.subheader("Filtra estudiantes según su promedio")
-    st.subheader("promedio mayor de 3")
-    st.write(archivo[archivo["promedio"] > 3])
+    st.title("Filtrar estudiantes por promedio")
+
+    filtrar_promedio = st.slider(
+        "Selecciona el promedio mínimo",
+        min_value=0.0,
+        max_value=5.0,
+        value=3.0,
+        step=0.1,
+    )
+
+    filtrados = archivo[archivo["promedio"] > filtrar_promedio]
+
+    st.write(f"Estudiantes con promedio mayor a {filtrar_promedio}:")
+    st.write(filtrados)

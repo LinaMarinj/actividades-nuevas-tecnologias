@@ -1,5 +1,7 @@
 import streamlit as st
 import pandas as pd
+import numpy as np
+
 
 # Configuración de la página
 st.set_page_config(page_icon="📌", layout="wide")
@@ -242,4 +244,105 @@ st.dataframe(df_datos_personas)"""
     st.code(mostrar_codigo_series, language="python")
 
 
-# 5. 
+# 5. Archivo Excel (local)
+
+st.subheader("**5. Archivo Excel (local):**")
+
+st.write(
+    """Crea un archivo Excel llamado data.xlsx con columnas como "producto", "precio" y "stock" (por ejemplo, 3 filas). Guárdalo en tu proyecto.
+En tu script, usa Pandas para leer el archivo Excel (pista: necesitas una función específica de Pandas y tal vez la biblioteca openpyxl instalada).
+En Streamlit, agrega un texto como "Datos desde Excel" y muestra el DataFrame con st.dataframe()."""
+)
+
+st.subheader("Datos desde Excel")
+df_xlsx = pd.read_excel("pages/static/dataset/data.xlsx")
+st.dataframe(df_xlsx)
+
+if st.button("Ver código #5"):
+    mostrar_codigo_excel = """
+    df_xlsx = pd.read_excel("pages/static/dataset/data.xlsx")
+    st.dataframe(df_xlsx)"""
+    st.code(mostrar_codigo_excel, language="python")
+
+
+# 6. Archivo JSON
+st.subheader("**6. Archivo JSON:**")
+
+st.write(
+    """En un editor de texto, crea un archivo data.json con una lista de objetos (por ejemplo, 3 usuarios con "nombre" y "correo"). Guárdalo en tu proyecto.
+Usa Pandas para leer el archivo JSON y convertirlo en un DataFrame (pista: hay una función read_json).
+En Streamlit, escribe "Datos de Usuarios desde JSON" y muestra el DataFrame con st.dataframe()."""
+)
+
+df_json = pd.read_json("pages/static/dataset/data.json")
+st.dataframe(df_json)
+
+if st.button("Ver código #6"):
+    mostrar_codigo_excel = """
+    df_json = pd.read_json("pages/static/dataset/data.json")
+    st.dataframe(df_json)"""
+    st.code(mostrar_codigo_excel, language="python")
+
+
+# 7. Base de datos SQLite
+st.subheader("**7. Base de datos SQLite:**")
+
+st.write(
+    """Importa la biblioteca sqlite3, crea una conexión a una base de datos (por ejemplo, estudiantes.db), y define una tabla con columnas como "nombre" y "calificación". Inserta al menos 3 filas de datos inventados.
+Usa Pandas para ejecutar una consulta SQL (como "SELECT * FROM tabla") y cargar los resultados en un DataFrame (pista: busca read_sql).
+En Streamlit, escribe "Datos desde SQLite" y muestra el DataFrame con st.dataframe()."""
+)
+
+# p3ndiente
+
+
+# 8. Array de NumPy
+
+st.subheader("**8. Array de NumPy:**")
+
+st.write(
+    """Importa NumPy y crea un array bidimensional (por ejemplo, 3 filas y 3 columnas) con datos numéricos o mixtos.
+Convierte este array en un DataFrame con Pandas, asignando nombres a las columnas si lo deseas.
+En Streamlit, agrega "Datos desde NumPy" y muestra el DataFrame con st.dataframe()."""
+)
+
+array_bidimencional = np.array(
+    [[1, 20, "Colombia"], [2, 50, "Mexico"], [3, 80, "Peru"]]
+)
+
+st.subheader("Datos desde NumPy")
+df_array = pd.DataFrame(array_bidimencional, columns=["id", "edad", "pais"])
+st.dataframe(df_array)
+
+if st.button("Ver código #8"):
+    mostrar_codigo_array = """
+array_bidimencional = np.array(
+    [[1, 20, "Colombia"], [2, 50, "Mexico"], [3, 80, "Peru"]]
+)
+
+st.subheader("Datos desde NumPy")
+df_array = pd.DataFrame(array_bidimencional, columns=["id", "edad", "pais"])
+st.dataframe(df_array)
+"""
+    st.code(mostrar_codigo_array, language="python")
+
+
+# 9. Firebase
+
+st.subheader("**9. Firebase:**")
+
+st.write(
+    """Configura un proyecto en Firebase, crea una colección con datos (por ejemplo, "usuarios" con "nombre" y "edad"), e instala firebase-admin.
+Usa la biblioteca para recuperar los documentos de la colección y conviértelos en un DataFrame con Pandas.
+En Streamlit, escribe "Datos desde Firebase" y muestra el DataFrame con st.dataframe()."""
+)
+
+
+# 10. MongoDB
+st.subheader("**10. MongoDB:**")
+
+st.write(
+    """Crea una base de datos y una colección en MongoDB, inserta datos (por ejemplo, 3 documentos con "nombre" y "ciudad"), e instala pymongo.
+Conecta tu script a MongoDB, recupera los documentos y conviértelos en un DataFrame con Pandas.
+En Streamlit, escribe "Datos desde MongoDB" y muestra el DataFrame con st.dataframe()."""
+)
